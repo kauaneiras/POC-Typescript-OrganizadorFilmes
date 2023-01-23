@@ -5,6 +5,7 @@ import cors from "cors";
 
 //IMPORT ROUTES
 import { signupRouter } from "./routes/singuprouter.js";
+import { signinRouter } from "./routes/signinrouter.js";
 
 //INITIALIZE
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //APP USE ROUTES
 app.use(signupRouter);
+app.use(signinRouter);
 
 //APP LISTEN
 app.listen(process.env.PORT, () => {
