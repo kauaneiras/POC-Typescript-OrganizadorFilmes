@@ -53,11 +53,9 @@ CREATE TABLE IF NOT EXISTS wishlist (
 
 CREATE TABLE IF NOT EXISTS avaliation (
     "id" SERIAL PRIMARY KEY,
-    "user_id" INTEGER NOT NULL,
-    "movie_id" INTEGER NOT NULL,
+    "watchedmovies_id" INTEGER NOT NULL,
     "avaliation" VARCHAR(255) NOT NULL,
-    FOREIGN KEY ("user_id") REFERENCES users ("id") ON DELETE CASCADE,
-    FOREIGN KEY ("movie_id") REFERENCES movies ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("watchedmovies_id") REFERENCES watchedmovies ("id") ON DELETE CASCADE,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
