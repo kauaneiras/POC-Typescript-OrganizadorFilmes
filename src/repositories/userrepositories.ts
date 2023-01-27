@@ -39,32 +39,16 @@ async function GetUserId(email: string){
 }
 
 async function singInRepository(email: string, token: string){
-    // const result = await prisma.users.findUnique({
-    //     where: { email: email },
-    //     select: { id: true }
-    // });
-    // const userId : number = result.id;
-
-    // return await prisma.sessions.create({
-    //     data: {
-    //         userId: userId,
-    //         token: token
-    //     }
-    // });
-
-    const result = await GetUserId(email);
-    const object = {
-        userId: result,
-        token: token,
-        users: {
-          connect: {
-            id: result
-          }
+    const result : number = await GetUserId(email);
+    const send =  await prisma.sessions.create({
+        data: {
+            token: token,
+            user_id: result
+            
         }
-    }
-    return await prisma.sessions.create({
-        data: object
     });
+    console.log(send)
+    return send;
 }
 
 
