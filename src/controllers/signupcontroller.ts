@@ -8,7 +8,7 @@ import httpStatus from 'http-status';
 //IMPORT CUSTOM MODULES
 import { SignUpType } from '../protocols/types.js';
 import { signupMiddleware} from '../middlewares/signupmiddleware.js';
-import { userExists, postNewUser } from '../repositories/repositories.js';
+import { userExists, postNewUser } from '../repositories/userrepositories.js';
 
 async function signupController(req: Request, res: Response){
     const SignUpData = req.body as SignUpType;
@@ -22,13 +22,13 @@ async function signupController(req: Request, res: Response){
         res.locals.name = SignUpData.name;
         res.locals.email = SignUpData.email;
         res.locals.password = SignUpData.password;
-        
         const userExistsResult = await userExists(res.locals.email);
-        if(userExistsResult.rowCount > 0){
+
+        
+        if(userExistsResult){
             return res.status(httpStatus.BAD_REQUEST).json({error: "User already exists"});
         }
         await postNewUser(res.locals.name, res.locals.email, res.locals.password);
-
         return res.status(httpStatus.CREATED).json({message: "User created"});
 
     }

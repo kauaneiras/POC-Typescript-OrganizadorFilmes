@@ -5,18 +5,20 @@ import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 import { SignInType } from "../protocols/types.js";
 import { signinMiddleware } from "../middlewares/signinmiddleware.js";
-import {userExists, userPasswordExists, singInRepository, GetUserId} from '../repositories/repositories.js';
+import {userExists, userPasswordExists, singInRepository, GetUserId} from '../repositories/userrepositories.js';
 
 async function signupController(req: Request, res: Response){
     const SignInData = req.body as SignInType;
     try{
         await signinMiddleware(req, res, SignInData);
         const userExistsResult = await userExists(res.locals.email);
+
         if(userExistsResult.rows.length === 0){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
         }
         const userPasswordExistsResult = await userPasswordExists(res.locals.email);
         const passwordMatch = await bcrypt.compare(res.locals.password, userPasswordExistsResult);
+
         if(!passwordMatch){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
         }
