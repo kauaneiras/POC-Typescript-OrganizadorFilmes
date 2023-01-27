@@ -10,5 +10,10 @@ type SignInType = {
     password: string
 }
 
-export {SignUpType, SignInType};
+type SessionCreate = {
+    userId: number,
+    token: string
+}
+
+export {SignUpType, SignInType, SessionCreate};
 

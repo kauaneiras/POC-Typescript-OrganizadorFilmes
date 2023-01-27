@@ -6,6 +6,7 @@ import cors from "cors";
 //IMPORT ROUTES
 import { signupRouter } from "./routes/singuprouter.js";
 import { signinRouter } from "./routes/signinrouter.js";
+import { moviesRouter } from "./routes/moviesrouter.js";
 
 //INITIALIZE
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(express.json());
 //APP USE ROUTES
 app.use(signupRouter);
 app.use(signinRouter);
+app.use(moviesRouter);
 
 //APP LISTEN
 app.listen(process.env.PORT, () => {
