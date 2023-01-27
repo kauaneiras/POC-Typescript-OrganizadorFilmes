@@ -12,11 +12,21 @@ async function signupController(req: Request, res: Response){
     try{
         await signinMiddleware(req, res, SignInData);
         const userExistsResult = await userExists(res.locals.email);
+<<<<<<< Updated upstream
         if(userExistsResult.rows.length === 0){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
         }
         const userPasswordExistsResult = await userPasswordExists(res.locals.email);
         const passwordMatch = await bcrypt.compare(res.locals.password, userPasswordExistsResult);
+=======
+
+        if(userExistsResult === null){
+            return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
+        }
+        const userPasswordExistsResult = await userPasswordExists(res.locals.email);
+        const passwordMatch = await bcrypt.compare(res.locals.password, userPasswordExistsResult.password);
+
+>>>>>>> Stashed changes
         if(!passwordMatch){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
         }
