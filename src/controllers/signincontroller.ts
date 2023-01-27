@@ -13,11 +13,11 @@ async function signupController(req: Request, res: Response){
         await signinMiddleware(req, res, SignInData);
         const userExistsResult = await userExists(res.locals.email);
 
-        if(userExistsResult.rows.length === 0){
+        if(userExistsResult === null){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
         }
         const userPasswordExistsResult = await userPasswordExists(res.locals.email);
-        const passwordMatch = await bcrypt.compare(res.locals.password, userPasswordExistsResult);
+        const passwordMatch = await bcrypt.compare(res.locals.password, userPasswordExistsResult.password);
 
         if(!passwordMatch){
             return res.status(httpStatus.UNAUTHORIZED).send({error: 'Email or password incorrect'});
