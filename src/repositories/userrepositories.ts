@@ -47,7 +47,6 @@ async function singInRepository(email: string, token: string){
             
         }
     });
-    console.log(send)
     return send;
 }
 

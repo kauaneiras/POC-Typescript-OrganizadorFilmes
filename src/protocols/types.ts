@@ -15,5 +15,13 @@ type SessionCreate = {
     token: string
 }
 
-export {SignUpType, SignInType, SessionCreate};
+type AllMoviesList = {
+    id: number,
+    title: string,
+    genders: string[],
+    plataforms: string,
+}
+
+
+export {SignUpType, SignInType, SessionCreate, AllMoviesList};
 
