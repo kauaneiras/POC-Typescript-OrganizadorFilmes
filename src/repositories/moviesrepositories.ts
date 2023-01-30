@@ -4,41 +4,22 @@ import { watchedmovies, wishlist, avaliation } from "@prisma/client";
 
 
 async function findAllMovies() {
-    const movies = await prisma.movies.findMany();
-    const genders = await prisma.gender.findMany();
-    const plataforms = await prisma.plataform.findMany();
+    const movies = await prisma.movies.findMany({
+        include: { gender: true, plataform: true, },
+    });
+
     const movieslist: AllMoviesList[] = [];
-    movies.forEach((movie) => {
-        const gendersArray: string[] = [];
-        const plataformsArray: string[] = [];
 
-        genders.forEach((gender) => {
-            if (gender.movie_id === movie.id) {
-                gendersArray.push(gender.gender);
-            }
-        });
-
-        plataforms.forEach((plataform) => {
-            if (plataform.movie_id === movie.id) {
-                plataformsArray.push(plataform.plataform);
-            }
-        });
-
+    for (const movie of movies) {
         const movieList: AllMoviesList = {
             id: movie.id,
             title: movie.title,
-            genders: gendersArray,
-            plataforms: plataformsArray.join(", "),
+            genders: movie.gender.map(gender => gender.gender),
+            plataforms: movie.plataform.map(plataform => plataform.plataform).join(", "),
         };
 
         movieslist.push(movieList);
     }
-<<<<<<< Updated upstream
-    );
-
-    console.log(movieslist);
-    return movieslist;    
-=======
 
     return movieslist;
 }
@@ -94,7 +75,6 @@ async function checkWatchedMovie(user: number, movie: number){
         }
     });
     return check;
->>>>>>> Stashed changes
 }
 
 async function checkWishListMovieAndDelete(user: number, movie: number){

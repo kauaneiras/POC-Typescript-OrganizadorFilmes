@@ -9,9 +9,6 @@ async function getAllMovies(req: Request, res: Response) {
     res.send(movies);
 }
 
-<<<<<<< Updated upstream
-export { getAllMovies };
-=======
 async function postWatchedMovieController(req: Request, res: Response) {
     const userId = res.locals.userId;
     const movie_id = req.body;
@@ -86,4 +83,3 @@ async function getWishListController(req: Request, res: Response) {
 
 
 export { getAllMovies, postWatchedMovieController, postWishListRepositoryController, getWishListController };
->>>>>>> Stashed changes
