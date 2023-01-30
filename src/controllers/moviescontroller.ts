@@ -1,5 +1,6 @@
 import { findAllMovies, postWatchedMovieRepository, postWishListRepository, 
          checkWatchedMovie, checkWishListMovieAndDelete, getWishListRepository, 
+         postAvaliationRepository, 
         } from "../repositories/moviesrepositories.js";
 import { Request, Response } from 'express';
 import httpStatus from "http-status";
@@ -81,5 +82,35 @@ async function getWishListController(req: Request, res: Response) {
     }
 }
 
+async function postAvaliationController(req: Request, res: Response) {
+    const userId = res.locals.userId;
+    const movie_id = req.body;
+    const avaliation = req.body;
 
-export { getAllMovies, postWatchedMovieController, postWishListRepositoryController, getWishListController };
+    const USERID : number = userId.user_id;
+    const MOVIEID : number = movie_id.movie_id;
+    const AVALIATION : string = avaliation.avaliation;
+
+    if (userId === undefined) {
+        return res.sendStatus(httpStatus.UNAUTHORIZED);
+    }
+
+    if (movie_id === undefined) {
+        return res.sendStatus(httpStatus.BAD_REQUEST);
+    }
+
+    try{
+        const check = await checkWatchedMovie(USERID, MOVIEID);
+        if(check === null){
+            return res.status(httpStatus.BAD_REQUEST).send("You didn't watch this movie");
+        }
+        await postAvaliationRepository(USERID, MOVIEID, AVALIATION);
+        res.sendStatus(httpStatus.CREATED);
+    } catch (error) {
+        res.sendStatus(httpStatus.BAD_REQUEST);
+    }
+}
+
+
+export { getAllMovies, postWatchedMovieController, postWishListRepositoryController, 
+         getWishListController, postAvaliationController };

@@ -113,5 +113,26 @@ async function getWishListRepository(user:number) {
     return wishlist;
 }
 
+
+async function postAvaliationRepository(user: number, movie: number, avaliation: string){
+    try{
+        const newAvaliation = await prisma.avaliation.create({
+            data: {
+                watchedmovies: {
+                    connect: {
+                        id: movie
+                    }
+                },
+                avaliation: avaliation
+            }
+        });
+        return newAvaliation;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export { findAllMovies, postWatchedMovieRepository, postWishListRepository, 
-         checkWatchedMovie, checkWishListMovieAndDelete, getWishListRepository };
+         checkWatchedMovie, checkWishListMovieAndDelete, getWishListRepository, 
+         postAvaliationRepository, 
+        };
