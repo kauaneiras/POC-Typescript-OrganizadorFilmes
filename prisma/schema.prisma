@@ -62,7 +62,6 @@ model watchedmovies {
   user_id    Int
   movie_id   Int
   created_at DateTime     @default(now()) @db.Timestamp(6)
-  avaliation avaliation[]
   movies     movies       @relation(fields: [movie_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   users      users        @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }
