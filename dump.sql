@@ -71,6 +71,9 @@ INSERT INTO movies (title) VALUES ('The Hobbit: The Desolation of Smaug');
 INSERT INTO movies (title) VALUES ('Stranger Things');
 INSERT INTO movies (title) VALUES ('The Witcher');
 INSERT INTO movies (title) VALUES ('The Umbrella Academy');
+INSERT INTO movies (title) VALUES ('One Piece');
+INSERT INTO movies (title) VALUES ('Dragon Ball Z');
+
 
 INSERT INTO gender (gender, movie_id) VALUES ('Ação', 1);
 INSERT INTO gender (gender, movie_id) VALUES ('Aventura', 1);
@@ -88,6 +91,15 @@ INSERT INTO gender (gender, movie_id) VALUES ('Aventura', 5);
 INSERT INTO gender (gender, movie_id) VALUES ('Superherois', 6);
 INSERT INTO gender (gender, movie_id) VALUES ('Ação', 6);
 INSERT INTO gender (gender, movie_id) VALUES ('Aventura', 6);
+INSERT INTO gender (gender, movie_id) VALUES ('Ação', 7);
+INSERT INTO gender (gender, movie_id) VALUES ('Aventura', 7);
+INSERT INTO gender (gender, movie_id) VALUES ('Anime', 7);
+INSERT INTO gender (gender, movie_id) VALUES ('Pirata', 7);
+INSERT INTO gender (gender, movie_id) VALUES ('Ação', 8);
+INSERT INTO gender (gender, movie_id) VALUES ('Aventura', 8);
+INSERT INTO gender (gender, movie_id) VALUES ('Anime', 8);
+INSERT INTO gender (gender, movie_id) VALUES ('Kamehameha', 8);
+
 
 INSERT INTO plataform (plataform, movie_id) VALUES ('Prime', 1);
 INSERT INTO plataform (plataform, movie_id) VALUES ('prime', 2);
@@ -95,6 +107,10 @@ INSERT INTO plataform (plataform, movie_id) VALUES ('Prime', 3);
 INSERT INTO plataform (plataform, movie_id) VALUES ('Netflix', 4);
 INSERT INTO plataform (plataform, movie_id) VALUES ('Netflix', 5);
 INSERT INTO plataform (plataform, movie_id) VALUES ('Netflix', 6);
+INSERT INTO plataform (plataform, movie_id) VALUES ('Crunchroll', 7);
+INSERT INTO plataform (plataform, movie_id) VALUES ('Crunchroll', 8);
+
+
 
 
 
