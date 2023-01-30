@@ -37,5 +37,9 @@ async function findAllMovies() {
     return movieslist;    
 }
 
+async function postWatchedMovieRepository() {
+    
+}
+
 
 export { findAllMovies };
