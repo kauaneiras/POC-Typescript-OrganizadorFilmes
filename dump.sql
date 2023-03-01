@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS avaliation (
 INSERT INTO users (name, email, password) VALUES ('admin', 'admin@email.com' ,'$2b$10$odqKqaq/hIs7q61A0vlSs.IVByYC8FOsPDgo4j6JTBSDC1mgTDegq');
 INSERT INTO users (name, email, password) VALUES ('user', 'user@email.com' ,'$2b$10$odqKqaq/hIs7q61A0vlSs.IVByYC8FOsPDgo4j6JTBSDC1mgTDegq');
 INSERT INTO users (name, email, password) VALUES ('user2', 'user2@email.com', '$2b$10$odqKqaq/hIs7q61A0vlSs.IVByYC8FOsPDgo4j6JTBSDC1mgTDegq');
+INSERT INTO users (name, email, password) VALUES ('user3', 'user3@email.com', '$2b$10$odqKqaq/hIs7q61A0vlSs.IVByYC8FOsPDgo4j6JTBSDC1mgTDegq');
+
 -- senha: 123456
 
 INSERT INTO movies (title) VALUES ('The Lord of the Rings: The Fellowship of the Ring');
